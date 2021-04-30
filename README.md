@@ -1,17 +1,34 @@
-### Node Express template project
+# Create DID 
 
-This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+For creating polygon DID use this command
+```
+npm run start:create
+```
 
-Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/express).
+# Register DID
 
-### CI/CD with Auto DevOps
+For register polygon DID use this command
+```
+npm run start:register
+```
 
-This template is compatible with [Auto DevOps](https://docs.gitlab.com/ee/topics/autodevops/).
+# Resolve DID
 
-If Auto DevOps is not already enabled for this project, you can [turn it on](https://docs.gitlab.com/ee/topics/autodevops/#enabling-auto-devops) in the project settings.
+For resolving polygon DID document use this command
+```
+npm run start:resolve
+```
 
-### Developing with Gitpod
+# Update DID
 
-This template has a fully-automated dev setup for [Gitpod](https://docs.gitlab.com/ee/integration/gitpod.html).
+For updating polygon DID document use this command
+```
+npm run start:update
+```
 
-If you open this project in Gitpod, you'll get all Node dependencies pre-installed and Express will open a web preview.
+# Delete DID
+
+For deleting polygon DID document use this command
+```
+npm run start:delete
+```
