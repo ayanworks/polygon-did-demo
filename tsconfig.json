@@ -1,13 +1,15 @@
 {
-    "extends:": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "js",
-        "esModuleInterop": true,
-        "lib": [
-            "es2015"
-        ]
+        "target": "es6", //default is es5
+        "module": "commonjs", //CommonJs style module in output
+        "outDir": "dist", //change the output directory
+        "resolveJsonModule": true, //to import out json database
+        // "esModuleInterop" :true,
     },
+    "include": [
+        "src/**/*.ts" //which kind of files to compile
+    ],
     "exclude": [
-        "js"
+        "node_modules" //which files or directories to ignore
     ]
 }

@@ -3,15 +3,11 @@
     "version": "1.0.0",
     "private": false,
     "scripts": {
-        "start:create": "ts-node src/create-did.ts",
-        "start:register": "ts-node src/register-did-on-polygon.ts",
-        "start:resolve": "ts-node src/resolve-did.ts",
-        "start:update": "ts-node src/update-did.ts",
-        "start:delete": "ts-node src/delete-did.ts",
         "build": "tsc",
         "clean": "rm -rf js node_modules",
         "server": "yarn build && node js/index.js",
-        "test": "echo 'No tests yet'"
+        "test": "echo 'No tests yet'",
+        "start": "ts-node ./src/server.ts"
     },
     "dependencies": {
         "@ayanworks/polygon-did-resolver": "0.0.3",
@@ -22,6 +18,7 @@
         "ts-node": "^8.5.4",
         "typescript": "^3.7.3",
         "log4js": "^6.3.0",
-        "ethers": "^5.1.0"
+        "ethers": "^5.1.0",
+        "swagger-ui-express": "^4.1.6"
     }
 }
