@@ -12,15 +12,19 @@ export class ResolveDid {
         app.post('/polygon/resolve-did', async (req, res) => {
 
             try {
+                let didDocRes = {};
                 const did = req.body.did;
-                const privateKey = req.body.privateKey;
 
-                const returnDidDoc = await resolveDID(did, privateKey)
+                const returnDidDoc = await resolveDID(did)
                     .then((response) => {
                         return response;
                     });
 
-                res.send(returnDidDoc);
+                didDocRes["success"] = returnDidDoc.success;
+                didDocRes["data"] = JSON.parse(returnDidDoc.data);
+                didDocRes["message"] = returnDidDoc.message;
+
+                res.status(201).send(didDocRes);
                 logger.debug(
                     `returnDidDoc - ${JSON.stringify(returnDidDoc)} \n\n\n`
                 );

@@ -20,7 +20,7 @@ export class DeleteDid {
                         return response;
                     });
 
-                res.send(deleteDidRes);
+                res.status(201).send(deleteDidRes);
                 logger.debug(
                     `deleteDidRes - ${JSON.stringify(deleteDidRes)} \n\n\n`
                 );

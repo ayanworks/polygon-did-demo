@@ -20,7 +20,7 @@ export class RegisterDid {
                         return response;
                     });
 
-                res.send(registerDidRes);
+                res.status(201).send(registerDidRes);
                 logger.debug(
                     `registerDidRes - ${JSON.stringify(registerDidRes)} \n\n\n`
                 );

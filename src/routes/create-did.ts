@@ -11,14 +11,16 @@ export class CreateDid {
 
         app.post('/polygon/create-did', async (req, res) => {
             try {
+
+                const networkType = req.body.networkType;
                 const privateKey = req.body.privateKey;
 
-                const createDidRes = await createDID(privateKey)
+                const createDidRes = await createDID(networkType, privateKey)
                     .then((response) => {
                         return response;
                     });
 
-                res.send(createDidRes);
+                res.status(201).send(createDidRes);
                 logger.debug(
                     `createDidRes - ${JSON.stringify(createDidRes)} \n\n\n`
                 );

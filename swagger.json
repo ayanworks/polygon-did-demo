@@ -33,8 +33,13 @@
                     "type": "string",
                     "schema": {
                         "properties": {
+                            "networkType": {
+                                "type": "string",
+                                "example": "testnet"
+                            },
                             "privateKey": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }
@@ -62,10 +67,12 @@
                         "type": "string",
                         "properties": {
                             "did": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
                             },
                             "privateKey": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }
@@ -96,10 +103,8 @@
                         "type": "string",
                         "properties": {
                             "did": {
-                                "type": "string"
-                            },
-                            "privateKey": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
                             }
                         }
                     }
@@ -130,13 +135,25 @@
                         "type": "string",
                         "properties": {
                             "did": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
                             },
                             "didDoc": {
-                                "type": "string"
+                                "type": "object",
+                                "example": {
+                                    "@context": "https://w3id.org/did/v1",
+                                    "id": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993",
+                                    "verificationMethod": [{
+                                        "id": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993",
+                                        "type": "EcdsaSecp256k1VerificationKey2019",
+                                        "controller": ["did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993", "did:polygon:0x794b781493AeD65b9ceBD680716fec257e118993"],
+                                        "publicKeyBase58": "7Lnm1ZnseKDkH1baAb1opREfAU4MPY7zCdUDSrWSm9NxNTQmy4neU9brFUYnEcyy7CwFKjD11ikyP9J8cf6zEaAKrEzzp"
+                                    }]
+                                }
                             },
                             "privateKey": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }
@@ -167,10 +184,12 @@
                         "type": "string",
                         "properties": {
                             "did": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
                             },
                             "privateKey": {
-                                "type": "string"
+                                "type": "string",
+                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }

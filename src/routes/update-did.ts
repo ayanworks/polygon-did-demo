@@ -13,7 +13,7 @@ export class UpdateDid {
 
             try {
                 const did = req.body.did;
-                const didDoc = req.body.didDoc;
+                const didDoc = JSON.stringify(req.body.didDoc);
                 const privateKey = req.body.privateKey;
 
                 const updateDidRes = await updateDidDoc(did, didDoc, privateKey)
@@ -21,7 +21,7 @@ export class UpdateDid {
                         return response;
                     });
 
-                res.send(updateDidRes);
+                res.status(201).send(updateDidRes);
                 logger.debug(
                     `updateDidRes - ${JSON.stringify(updateDidRes)} \n\n\n`
                 );
