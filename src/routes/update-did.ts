@@ -9,19 +9,27 @@ export class UpdateDid {
 
     public routes(app): void {
 
-        app.post('/polygon/update-did', async (req, res) => {
+        app.patch('/update-did/:did/:privateKey', async (req, res) => {
 
             try {
-                const did = req.body.did;
-                const didDoc = req.body.didDoc;
-                const privateKey = req.body.privateKey;
+                const did = req.params.did;
+                const privateKey = req.params.privateKey;
+                const didDoc = JSON.stringify(req.body.didDoc);
 
                 const updateDidRes = await updateDidDoc(did, didDoc, privateKey)
                     .then((response) => {
                         return response;
                     });
 
-                res.send(updateDidRes);
+                const gasPrice = updateDidRes.data.gasPrice;
+                const gasLimit = updateDidRes.data.gasLimit;
+
+                const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
+                const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
+
+                const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
+
+                res.status(200).json({ success: updateDidRes.success, data: { gasPrice, gasLimit, TX_Fee: txnFee }, message: updateDidRes.message });
                 logger.debug(
                     `updateDidRes - ${JSON.stringify(updateDidRes)} \n\n\n`
                 );
@@ -29,8 +37,7 @@ export class UpdateDid {
                 logger.error(
                     `UpdateDid Error- ${JSON.stringify(error)} \n\n\n`
                 );
-                res.send(error);
-
+                res.status(500).send(error);
             }
         })
     }

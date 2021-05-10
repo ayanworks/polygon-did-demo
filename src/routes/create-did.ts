@@ -9,16 +9,18 @@ export class CreateDid {
 
     public routes(app): void {
 
-        app.post('/polygon/create-did', async (req, res) => {
+        app.post('/create-did', async (req, res) => {
             try {
+
+                const networkType = req.body.networkType;
                 const privateKey = req.body.privateKey;
 
-                const createDidRes = await createDID(privateKey)
+                const createDidRes = await createDID(networkType, privateKey)
                     .then((response) => {
                         return response;
                     });
 
-                res.send(createDidRes);
+                res.status(201).send(createDidRes);
                 logger.debug(
                     `createDidRes - ${JSON.stringify(createDidRes)} \n\n\n`
                 );
@@ -26,7 +28,7 @@ export class CreateDid {
                 logger.error(
                     `CreateDid Error- ${JSON.stringify(error)} \n\n\n`
                 );
-                res.send(error);
+                res.status(500).send(error);
             }
         })
     }
