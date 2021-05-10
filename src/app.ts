@@ -31,7 +31,7 @@ class App {
 
     private config(): void {
 
-        this.app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+        this.app.use('/index', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data
         this.app.use(bodyParser.urlencoded({

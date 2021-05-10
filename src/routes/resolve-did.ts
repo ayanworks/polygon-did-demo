@@ -9,11 +9,11 @@ export class ResolveDid {
 
     public routes(app): void {
 
-        app.post('/polygon/resolve-did', async (req, res) => {
+        app.get('/resolve-did/:did', async (req, res) => {
 
             try {
                 let didDocRes = {};
-                const did = req.body.did;
+                const did = req.params.did;
 
                 const returnDidDoc = await resolveDID(did)
                     .then((response) => {
@@ -24,7 +24,7 @@ export class ResolveDid {
                 didDocRes["data"] = JSON.parse(returnDidDoc.data);
                 didDocRes["message"] = returnDidDoc.message;
 
-                res.status(201).send(didDocRes);
+                res.status(200).send(didDocRes);
                 logger.debug(
                     `returnDidDoc - ${JSON.stringify(returnDidDoc)} \n\n\n`
                 );
@@ -32,7 +32,7 @@ export class ResolveDid {
                 logger.error(
                     `ResolveDid Error- ${JSON.stringify(error)} \n\n\n`
                 );
-                res.send(error);
+                res.status(500).send(error);
             }
         })
     }

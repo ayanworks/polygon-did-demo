@@ -9,7 +9,7 @@ export class CreateDid {
 
     public routes(app): void {
 
-        app.post('/polygon/create-did', async (req, res) => {
+        app.post('/create-did', async (req, res) => {
             try {
 
                 const networkType = req.body.networkType;
@@ -28,7 +28,7 @@ export class CreateDid {
                 logger.error(
                     `CreateDid Error- ${JSON.stringify(error)} \n\n\n`
                 );
-                res.send(error);
+                res.status(500).send(error);
             }
         })
     }

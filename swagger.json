@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Polygon Demo",
+        "title": "Polygon DID-Method Demo",
         "description": "A NodeJs application to polygon demo",
         "license": {
             "name": "MIT"
@@ -19,7 +19,7 @@
         "application/json"
     ],
     "paths": {
-        "/polygon/create-did": {
+        "/create-did": {
             "post": {
                 "tags": [
                     "Create polygon DID"
@@ -36,10 +36,6 @@
                             "networkType": {
                                 "type": "string",
                                 "example": "testnet"
-                            },
-                            "privateKey": {
-                                "type": "string",
-                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }
@@ -51,7 +47,7 @@
                 }
             }
         },
-        "/polygon/register-did": {
+        "/register-did": {
             "post": {
                 "tags": [
                     "Register polygon DID"
@@ -87,27 +83,17 @@
                 }
             }
         },
-        "/polygon/resolve-did": {
-            "post": {
+        "/resolve-did/{did}": {
+            "get": {
                 "tags": [
                     "Resolve polygon DID"
                 ],
                 "summary": "API Endpoint for resolve polygon DID",
                 "description": "Resolve polygon DID",
                 "parameters": [{
-                    "in": "body",
-                    "name": "body",
-                    "description": "Resolve new polygon DID",
-                    "required": true,
-                    "schema": {
-                        "type": "string",
-                        "properties": {
-                            "did": {
-                                "type": "string",
-                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
-                            }
-                        }
-                    }
+                    "in": "path",
+                    "name": "did",
+                    "required": true
                 }],
                 "produces": [
                     "application/json"
@@ -119,25 +105,29 @@
                 }
             }
         },
-        "/polygon/update-did": {
-            "post": {
+        "/update-did/{did}/{privateKey}": {
+            "patch": {
                 "tags": [
                     "Update polygon DID"
                 ],
                 "summary": "API Endpoint for update polygon DID",
                 "description": "Update polygon DID",
                 "parameters": [{
-                    "name": "body",
+                    "name": "did",
+                    "in": "path",
+                    "required": true
+                }, {
+                    "name": "privateKey",
+                    "in": "path",
+                    "required": true
+                }, {
                     "in": "body",
-                    "description": "Update new polygon DID",
+                    "name": "body",
+                    "description": "Register new polygon DID",
                     "required": true,
                     "schema": {
                         "type": "string",
                         "properties": {
-                            "did": {
-                                "type": "string",
-                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
-                            },
                             "didDoc": {
                                 "type": "object",
                                 "example": {
@@ -146,14 +136,13 @@
                                     "verificationMethod": [{
                                         "id": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993",
                                         "type": "EcdsaSecp256k1VerificationKey2019",
-                                        "controller": ["did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993", "did:polygon:0x794b781493AeD65b9ceBD680716fec257e118993"],
+                                        "controller": [
+                                            "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993",
+                                            "did:polygon:0x794b781493AeD65b9ceBD680716fec257e118993"
+                                        ],
                                         "publicKeyBase58": "7Lnm1ZnseKDkH1baAb1opREfAU4MPY7zCdUDSrWSm9NxNTQmy4neU9brFUYnEcyy7CwFKjD11ikyP9J8cf6zEaAKrEzzp"
                                     }]
                                 }
-                            },
-                            "privateKey": {
-                                "type": "string",
-                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
                             }
                         }
                     }
@@ -168,31 +157,21 @@
                 }
             }
         },
-        "/polygon/delete-did": {
-            "post": {
+        "/delete-did/{did}/{privateKey}": {
+            "delete": {
                 "tags": [
                     "Delete polygon DID"
                 ],
                 "summary": "API Endpoint for delete polygon DID",
                 "description": "Update polygon DID",
                 "parameters": [{
-                    "in": "body",
-                    "name": "body",
-                    "description": "Delete polygon DID",
-                    "required": true,
-                    "schema": {
-                        "type": "string",
-                        "properties": {
-                            "did": {
-                                "type": "string",
-                                "example": "did:polygon:testnet:0x794b781493AeD65b9ceBD680716fec257e118993"
-                            },
-                            "privateKey": {
-                                "type": "string",
-                                "example": "0xd922b5e24ab1132f68d8c3a3e758d6814f71d5b1acffdffa6a19b8f8d55db507"
-                            }
-                        }
-                    }
+                    "name": "did",
+                    "in": "path",
+                    "required": true
+                }, {
+                    "name": "privateKey",
+                    "in": "path",
+                    "required": true
                 }],
                 "produces": [
                     "application/json"
