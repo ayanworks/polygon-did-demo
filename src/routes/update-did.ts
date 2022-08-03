@@ -1,4 +1,3 @@
-
 import { updateDidDoc } from '@ayanworks/polygon-did-registrar';
 import * as log4js from "log4js";
 

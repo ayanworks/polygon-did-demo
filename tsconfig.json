@@ -7,7 +7,7 @@
         // "esModuleInterop" :true,
     },
     "include": [
-        "src/**/*.ts" //which kind of files to compile
+        "src/**/*" //which kind of files to compile
     ],
     "exclude": [
         "node_modules" //which files or directories to ignore

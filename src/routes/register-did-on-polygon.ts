@@ -15,6 +15,9 @@ export class RegisterDid {
                 const did = req.body.did;
                 const privateKey = req.body.privateKey;
 
+                console.log(did);
+                console.log(privateKey);
+
                 const registerDidRes = await registerDID(did, privateKey)
                     .then((response) => {
                         return response;
