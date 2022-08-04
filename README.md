@@ -10,4 +10,4 @@ npm install
 npm run start
 ```
 
-This will run the app on port 8081, where you can access the Swagger APIs.
+This will run the app on `http://localhost:8081/index`, where you can access the Swagger APIs.
