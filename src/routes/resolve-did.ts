@@ -1,28 +1,39 @@
-
-import { resolveDID } from '@ayanworks/polygon-did-resolver';
+import * as didResolvers from "did-resolver";
+import * as didPolygon from '@ayanworks/polygon-did-resolver';
 import * as log4js from "log4js";
 
 const logger = log4js.getLogger();
 logger.level = 'debug';
 
 export class ResolveDid {
+    public resolver: didResolvers.Resolver
+    public constructor() {
+        this.resolver = new didResolvers.Resolver(
+            {
+                ...didPolygon.getResolver(),
+            },
+
+            { cache: true }
+        )
+    }
 
     public routes(app): void {
 
         app.get('/resolve-did/:did', async (req, res) => {
 
             try {
-                let didDocRes = {};
+                console.log("#########");
+                console.log(req);
                 const did = req.params.did;
-
-                const returnDidDoc = await resolveDID(did)
+                console.log(did);
+                console.log(this.resolver);
+                
+                const returnDidDoc = await this.resolver.resolve(did)
                     .then((response) => {
-                        return response;
-                    });
+                    return response;
+                });
 
-                didDocRes["success"] = returnDidDoc.success;
-                didDocRes["data"] = JSON.parse(returnDidDoc.data);
-                didDocRes["message"] = returnDidDoc.message;
+                let didDocRes = returnDidDoc.didDocument;
 
                 res.status(200).send(didDocRes);
                 logger.debug(
