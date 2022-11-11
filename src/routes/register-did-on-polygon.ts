@@ -15,23 +15,23 @@ export class RegisterDid {
                 const did = req.body.did;
                 const privateKey = req.body.privateKey;
 
-                console.log(did);
-                console.log(privateKey);
-
                 const registerDidRes = await registerDID(did, privateKey)
                     .then((response) => {
                         return response;
                     });
 
-                const gasPrice = registerDidRes.data.txnHash.gasPrice;
-                const gasLimit = registerDidRes.data.txnHash.gasLimit;
+                
 
-                const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
-                const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
+                // const gasPrice = registerDidRes.data.txnHash.maxFeePerGas;
+                // const gasLimit = registerDidRes.data.txnHash.gasLimit;
 
-                const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
+                // const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
+                // const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
+                // const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
 
-                res.status(201).json({ success: registerDidRes.success, data: { gasPrice, gasLimit, TX_Fee: txnFee }, message: registerDidRes.message });
+                res.status(201).json({ success: registerDidRes.success, 
+                    // data: { gasPrice, gasLimit, TX_Fee: txnFee },
+                     message: registerDidRes.message });
                 logger.debug(
                     `registerDidRes - ${JSON.stringify(registerDidRes)} \n\n\n`
                 );

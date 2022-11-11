@@ -22,12 +22,7 @@ export class ResolveDid {
         app.get('/resolve-did/:did', async (req, res) => {
 
             try {
-                console.log("#########");
-                console.log(req);
                 const did = req.params.did;
-                console.log(did);
-                console.log(this.resolver);
-                
                 const returnDidDoc = await this.resolver.resolve(did)
                     .then((response) => {
                     return response;
