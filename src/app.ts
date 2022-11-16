@@ -7,6 +7,8 @@ import { ResolveDid } from "./routes/resolve-did";
 import { UpdateDid } from "./routes/update-did";
 import * as swaggerDocument from '../swagger.json';
 import * as swaggerUi from 'swagger-ui-express';
+import * as cors from 'cors';
+
 
 class App {
 
@@ -38,8 +40,7 @@ class App {
             extended: false
         }));
         this.app.use(bodyParser.text())
-
-
+        this.app.use(cors())
     }
 
 }
