@@ -20,15 +20,15 @@ export class DeleteDid {
                         return response;
                     });
 
-                const gasPrice = deleteDidRes.data.gasPrice;
-                const gasLimit = deleteDidRes.data.gasLimit;
+                // const gasPrice = deleteDidRes.data.gasPrice;
+                // const gasLimit = deleteDidRes.data.gasLimit;
 
-                const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
-                const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
+                // const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
+                // const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
 
-                const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
+                // const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
 
-                res.status(200).json({ success: deleteDidRes.success, data: { gasPrice, gasLimit, TX_Fee: txnFee }, message: deleteDidRes.message });
+                res.status(200).json({ success: deleteDidRes.success, message: deleteDidRes.message });
                 logger.debug(
                     `deleteDidRes - ${JSON.stringify(deleteDidRes)} \n\n\n`
                 );
