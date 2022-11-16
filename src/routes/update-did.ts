@@ -20,15 +20,15 @@ export class UpdateDid {
                         return response;
                     });
 
-                const gasPrice = updateDidRes.data.gasPrice;
-                const gasLimit = updateDidRes.data.gasLimit;
+                // const gasPrice = updateDidRes.data.gasPrice;
+                // const gasLimit = updateDidRes.data.gasLimit;
 
-                const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
-                const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
+                // const gasPriceDecimal = parseInt(gasPrice._hex.substr(2), 16);
+                // const gasLimitDecimal = parseInt(gasLimit._hex.substr(2), 16);
 
-                const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
+                // const txnFee = (gasPriceDecimal * gasLimitDecimal / Math.pow(10, 18))
 
-                res.status(200).json({ success: updateDidRes.success, data: { gasPrice, gasLimit, TX_Fee: txnFee }, message: updateDidRes.message });
+                res.status(200).json({ success: updateDidRes.success, message: updateDidRes.message });
                 logger.debug(
                     `updateDidRes - ${JSON.stringify(updateDidRes)} \n\n\n`
                 );
