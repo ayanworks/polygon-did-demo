@@ -12,7 +12,7 @@
     "dependencies": {
         "@ayanworks/polygon-did-resolver": "0.0.13",
         "cors": "^2.8.5",
-        "express": "^4.18.2"
+        "express": "^4.19.2"
     },
     "devDependencies": {
         "@ayanworks/polygon-did-registrar": "0.0.15",
